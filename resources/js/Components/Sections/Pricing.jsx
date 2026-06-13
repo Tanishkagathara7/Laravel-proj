@@ -95,7 +95,7 @@ function PricingCard({ plan, isAnnual }) {
   return (
     <motion.div
       variants={cardVariants}
-      className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 ${
+      className={`relative flex flex-col rounded-2xl transition-all duration-300 ${
         plan.popular
           ? 'border-2 border-indigo-500 scale-105 shadow-[0_0_60px_rgba(99,102,241,0.25)] bg-gradient-to-b from-indigo-500/5 to-transparent'
           : 'border border-white/10 bg-white/[0.02]'
