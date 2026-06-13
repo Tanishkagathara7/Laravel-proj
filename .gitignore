@@ -18,3 +18,5 @@ yarn-error.log
 /.idea
 /.nova
 /.vscode
+/bootstrap/cache/*.php
+!/bootstrap/cache/.gitignore
