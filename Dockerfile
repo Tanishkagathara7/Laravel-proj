@@ -14,7 +14,7 @@ COPY postcss.config.js ./
 RUN npm run build
 
 # ── Stage 2: PHP/Laravel runtime ────────────────────────────────
-FROM php:8.2-cli-alpine
+FROM php:8.4-cli-alpine
 
 # Install system deps + PHP extensions
 RUN apk add --no-cache \
