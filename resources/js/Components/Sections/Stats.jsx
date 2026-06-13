@@ -94,12 +94,14 @@ export default function Stats() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-4">
-            By the Numbers
-          </span>
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+              ✦ By the Numbers
+            </span>
+          </div>
           <h2
             id="stats-heading"
-            className="text-4xl font-bold text-white"
+            className="text-4xl md:text-5xl font-bold text-white text-center"
           >
             Results That{' '}
             <span
@@ -113,7 +115,7 @@ export default function Stats() {
               Speak for Themselves
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-xl mx-auto mt-3">
+          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Every metric below is pulled from real client data — not marketing estimates.
           </p>
         </motion.div>

@@ -211,12 +211,12 @@ export default function Portfolio() {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-                           bg-indigo-500/10 border border-indigo-500/20
-                           text-indigo-400 text-sm font-medium mb-4">
-            Our Work
-          </span>
-          <h2 id="portfolio-heading" className="text-4xl font-bold text-white">
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+              ✦ Our Work
+            </span>
+          </div>
+          <h2 id="portfolio-heading" className="text-4xl md:text-5xl font-bold text-white text-center">
             Projects That{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -229,7 +229,7 @@ export default function Portfolio() {
               Redefine Industries
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mt-3">
+          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
             A curated selection of work we're most proud of. Every project shipped on time and on budget.
           </p>
         </motion.div>

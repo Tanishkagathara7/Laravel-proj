@@ -184,12 +184,14 @@ export default function Services() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-4">
-            What We Build
-          </span>
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+              ✦ What We Build
+            </span>
+          </div>
           <h2
             id="services-heading"
-            className="text-4xl font-bold text-white"
+            className="text-4xl md:text-5xl font-bold text-white text-center"
           >
             Services That{' '}
             <span
@@ -203,7 +205,7 @@ export default function Services() {
               Move Needles
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mt-3">
+          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
             We don't just write code — we architect competitive advantages. Every engagement is engineered to deliver measurable business outcomes.
           </p>
         </motion.div>

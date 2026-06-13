@@ -162,13 +162,12 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-4">
-            Get in Touch
-          </span>
-          <h2
-            id="contact-heading"
-            className="text-4xl font-bold text-white mb-4"
-          >
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+              ✦ Get in Touch
+            </span>
+          </div>
+          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-white text-center mb-4">
             Let's Build{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -181,94 +180,37 @@ export default function Contact() {
               Something Great
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-xl mx-auto mt-3">
+          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Ready to transform your business with AI? Tell us about your project and we'll get back to you within 4 hours.
           </p>
         </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto mt-16">
+          {/* Left: Info column */}
+          <div className="space-y-8">
+            <h3 className="text-3xl font-bold text-white">
+              Let's build something <span className="text-indigo-400">great</span>
+            </h3>
+            <p className="text-slate-400">Tell us about your project and we'll craft a tailored proposal within 48 hours.</p>
+            {[
+              { icon: Mail,    label: 'hello@nexaai.com' },
+              { icon: Phone,   label: '+1 (555) 000-0000' },
+              { icon: MapPin,  label: 'San Francisco, CA' },
+            ].map(({ icon: Icon, label }, i) => (
+              <div key={i} className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-5 h-5 text-indigo-400" />
+                </div>
+                <span className="text-slate-300">{label}</span>
+              </div>
+            ))}
+          </div>
 
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* Left: Contact info */}
+          {/* Right: Form in glass card */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="lg:col-span-2 space-y-6"
-          >
-            {/* Left column heading */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-white mb-2">Let's build something great</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Tell us about your project and we'll craft a tailored proposal within 48 hours.</p>
-            </motion.div>
-
-            {/* Divider */}
-            <motion.div variants={itemVariants} className="h-px bg-white/5" aria-hidden="true" />
-            {contactInfo.map((info) => {
-              const Icon = info.icon;
-              return (
-                <motion.div
-                  key={info.label}
-                  variants={itemVariants}
-                  className="flex items-start gap-4"
-                >
-                  <div
-                    className={`w-11 h-11 rounded-xl ${info.bg} border ${info.border} flex items-center justify-center flex-shrink-0`}
-                    aria-hidden="true"
-                  >
-                    <Icon className={`w-5 h-5 ${info.color}`} />
-                  </div>
-                  <div>
-                    <div className="text-slate-400 text-xs font-medium mb-0.5 uppercase tracking-wider">
-                      {info.label}
-                    </div>
-                    {info.href ? (
-                      <a
-                        href={info.href}
-                        className="text-white font-medium hover:text-indigo-400 transition-colors focus:outline-none focus-visible:underline"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <div className="text-white font-medium">{info.value}</div>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
-
-            {/* Divider */}
-            <motion.div variants={itemVariants} className="h-px bg-white/5" aria-hidden="true" />
-
-            {/* Why contact us box */}
-            <motion.div
-              variants={itemVariants}
-              className="p-5 rounded-xl bg-white/5 border border-white/10"
-            >
-              <h3 className="font-display font-semibold text-white mb-3 text-sm">
-                What happens next?
-              </h3>
-              <ol className="space-y-3">
-                {[
-                  'We review your message within 4 hours',
-                  'A senior engineer schedules a discovery call',
-                  'We send a custom proposal within 48 hours',
-                ].map((step, i) => (
-                  <li key={step} className="flex items-start gap-3 text-sm text-slate-400">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs flex items-center justify-center font-bold mt-0.5">
-                      {i + 1}
-                    </span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-            </motion.div>
-          </motion.div>
-
-          {/* Right: Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-3"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md"
           >
             <div className="relative p-8 rounded-3xl bg-slate-900/50 backdrop-blur-xl border border-white/10 overflow-hidden max-w-2xl mx-auto shadow-2xl">
               {/* Glow top */}

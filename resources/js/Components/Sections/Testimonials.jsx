@@ -118,12 +118,12 @@ export default function Testimonials() {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-                           bg-indigo-500/10 border border-indigo-500/20
-                           text-indigo-400 text-sm font-medium mb-4">
-            Client Stories
-          </span>
-          <h2 id="testimonials-heading" className="text-4xl font-bold text-white">
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+              ✦ Client Stories
+            </span>
+          </div>
+          <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold text-white text-center">
             Trusted by{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -136,7 +136,7 @@ export default function Testimonials() {
               Industry Leaders
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mt-3">
+          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Don't take our word for it — hear directly from the teams we've partnered with.
           </p>
         </motion.div>
@@ -147,97 +147,57 @@ export default function Testimonials() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="max-w-3xl mx-auto" aria-live="polite" aria-atomic="true">
-            <AnimatePresence mode="wait" custom={direction}>
+          <div className="relative max-w-3xl mx-auto mt-16" aria-live="polite" aria-atomic="true">
+            <AnimatePresence mode="wait">
               <motion.div
                 key={current}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
-                onDragEnd={(_, { offset }) => {
-                  if (offset.x < -50) next();
-                  else if (offset.x > 50) prev();
-                }}
-                className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 cursor-grab active:cursor-grabbing select-none"
-                aria-label={`Testimonial ${current + 1} of ${testimonials.length}`}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.4 }}
+                className="p-8 md:p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md"
               >
-                {/* Opening quote mark (fix #9) */}
-                <div
-                  className="text-6xl text-indigo-500 font-serif leading-none mb-4"
-                  aria-hidden="true"
-                >
-                  "
+                {/* Stars */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
                 </div>
 
-                {/* Quote text */}
-                <blockquote className="text-slate-300 text-lg italic leading-relaxed mb-8">
-                  {t.quote}
-                </blockquote>
+                {/* Opening quote mark */}
+                <div className="text-7xl text-indigo-500 font-serif leading-none mb-2 -mt-2">"</div>
 
-                {/* Bottom row: avatar + name/role + stars */}
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                  <div className="flex items-center gap-4">
-                    {/* Avatar */}
-                    <div
-                      className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600
-                                 flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                      aria-hidden="true"
-                    >
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <div className="font-semibold text-white">{t.name}</div>
-                      <div className="text-slate-400 text-sm">{t.role}</div>
-                    </div>
+                {/* Quote text */}
+                <p className="text-slate-300 text-xl italic leading-relaxed mb-8">
+                  {testimonials[current].quote}
+                </p>
+
+                {/* Author row */}
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
+                    {testimonials[current].avatar}
                   </div>
-                  <StarRating count={t.stars} />
+                  <div>
+                    <p className="text-white font-semibold">
+                      {testimonials[current].name}
+                    </p>
+                    <p className="text-slate-400 text-sm">
+                      {testimonials[current].role}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* ── Prev / Next arrows + dots (fix #9) ── */}
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <button
-                onClick={prev}
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10
-                           flex items-center justify-center text-slate-400
-                           hover:text-white hover:bg-white/10 transition-colors
-                           focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="w-5 h-5" aria-hidden="true" />
+            {/* Prev/Next arrows */}
+            <div className="flex justify-center gap-3 mt-8">
+              <button onClick={prev} 
+                className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                <ChevronLeft className="w-5 h-5 text-white" />
               </button>
-
-              <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial navigation">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    role="tab"
-                    aria-selected={i === current}
-                    aria-label={`Go to testimonial ${i + 1}`}
-                    onClick={() => goTo(i)}
-                    className={`h-2 rounded-full transition-all duration-300
-                                focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
-                      i === current ? 'w-8 bg-indigo-500' : 'w-2 bg-white/20 hover:bg-white/40'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={next}
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10
-                           flex items-center justify-center text-slate-400
-                           hover:text-white hover:bg-white/10 transition-colors
-                           focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="w-5 h-5" aria-hidden="true" />
+              <button onClick={next}
+                className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                <ChevronRight className="w-5 h-5 text-white" />
               </button>
             </div>
           </div>

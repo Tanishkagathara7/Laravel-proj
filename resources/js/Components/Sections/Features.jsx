@@ -121,16 +121,18 @@ export default function Features() {
           className="text-center mb-16"
         >
           {/* Layer 1 — badge */}
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-                           bg-indigo-500/10 border border-indigo-500/20
-                           text-indigo-400 text-sm font-medium mb-4">
-            Why NexaAI
-          </span>
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
+                             bg-indigo-500/10 border border-indigo-500/20
+                             text-indigo-400 text-sm font-medium">
+              ✦ Why NexaAI
+            </span>
+          </div>
 
           {/* Layer 2 — heading */}
           <h2
             id="features-heading"
-            className="text-4xl font-bold text-white"
+            className="text-4xl md:text-5xl font-bold text-white text-center"
           >
             Engineered for{' '}
             <span
@@ -146,26 +148,36 @@ export default function Features() {
           </h2>
 
           {/* Layer 3 — subtitle */}
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mt-3">
+          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Our process is refined across hundreds of projects to deliver exceptional outcomes every
             time — without compromise on quality, security, or speed.
           </p>
         </motion.div>
 
         {/* ── 3-column icon card grid (fix #7) ── */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          role="list"
-        >
-          {features.map((feature) => (
-            <div key={feature.title} role="listitem">
-              <FeatureCard feature={feature} />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+          {features.map((feature, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="group p-6 rounded-2xl bg-white/5 border border-white/10
+                hover:border-indigo-500/50 hover:-translate-y-1
+                transition-all duration-300 backdrop-blur-sm"
+            >
+              {/* Icon container */}
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br 
+                from-indigo-500 to-purple-600 
+                flex items-center justify-center mb-4">
+                <feature.icon className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-white font-semibold text-lg mb-2">{feature.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">{feature.description}</p>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

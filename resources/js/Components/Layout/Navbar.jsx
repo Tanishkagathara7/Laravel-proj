@@ -22,23 +22,18 @@ const mobileMenuVariants = {
 };
 
 export default function Navbar() {
-  const [isVisible, setIsVisible] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const lastScrollY = useRef(0);
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, 'change', (current) => {
-    const previous = lastScrollY.current;
-    if (current > previous && current > 80) {
-      setIsVisible(false);
-      setMobileOpen(false);
-    } else {
-      setIsVisible(true);
-    }
-    setIsScrolled(current > 20);
-    lastScrollY.current = current;
-  });
+  useEffect(() => {
+    return scrollY.on('change', (latest) => {
+      const prev = scrollY.getPrevious();
+      setHidden(latest > prev && latest > 150);
+      setScrolled(latest > 50);
+    });
+  }, [scrollY]);
 
   const scrollToSection = (e, href) => {
     e.preventDefault();
@@ -49,13 +44,12 @@ export default function Navbar() {
 
   return (
     <motion.header
-      variants={navVariants}
-      animate={isVisible ? 'visible' : 'hidden'}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0F172A]/90 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
-          : 'bg-transparent'
-      }`}
+      animate={{ y: hidden ? '-100%' : '0%' }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300
+        ${scrolled 
+          ? 'bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10' 
+          : 'bg-transparent'}`}
       role="banner"
     >
       <nav

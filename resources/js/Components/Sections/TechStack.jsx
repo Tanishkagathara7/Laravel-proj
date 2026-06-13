@@ -87,12 +87,12 @@ export default function TechStack() {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-                           bg-indigo-500/10 border border-indigo-500/20
-                           text-indigo-400 text-sm font-medium mb-4">
-            Our Stack
-          </span>
-          <h2 id="tech-heading" className="text-4xl font-bold text-white">
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+              ✦ Our Stack
+            </span>
+          </div>
+          <h2 id="tech-heading" className="text-4xl md:text-5xl font-bold text-white text-center">
             Best-in-Class{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -105,7 +105,7 @@ export default function TechStack() {
               Technology
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mt-3">
+          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
             We're technology-agnostic but opinionated — we choose the right tool for each job
             and we know these tools deeply.
           </p>

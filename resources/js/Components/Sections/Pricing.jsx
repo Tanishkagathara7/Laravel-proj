@@ -97,17 +97,17 @@ function PricingCard({ plan, isAnnual }) {
       variants={cardVariants}
       className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 ${
         plan.popular
-          ? // fix #11 — featured card styles
-            'border-2 border-indigo-500 scale-105 shadow-[0_0_40px_rgba(99,102,241,0.3)] bg-gradient-to-b from-indigo-500/5 to-transparent'
+          ? 'border-2 border-indigo-500 scale-105 shadow-[0_0_60px_rgba(99,102,241,0.25)] bg-gradient-to-b from-indigo-500/5 to-transparent'
           : 'border border-white/10 bg-white/[0.02]'
       }`}
       aria-label={`${plan.name} plan${plan.popular ? ', most popular' : ''}`}
     >
-      {/* Most Popular badge — sits outside/above the card visually (fix #11) */}
+      {/* Most Popular badge */}
       {plan.popular && (
-        <div className="flex justify-center pt-4 pb-0 px-4">
-          <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white
-                           text-xs font-bold px-4 py-1 rounded-full shadow">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+          <span className="bg-gradient-to-r from-indigo-500 to-purple-600
+                           text-white text-xs font-bold px-5 py-1.5 rounded-full
+                           whitespace-nowrap">
             Most Popular
           </span>
         </div>
@@ -204,12 +204,12 @@ export default function Pricing() {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-                           bg-indigo-500/10 border border-indigo-500/20
-                           text-indigo-400 text-sm font-medium mb-4">
-            Transparent Pricing
-          </span>
-          <h2 id="pricing-heading" className="text-4xl font-bold text-white">
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+              ✦ Transparent Pricing
+            </span>
+          </div>
+          <h2 id="pricing-heading" className="text-4xl md:text-5xl font-bold text-white text-center">
             Invest in{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -222,7 +222,7 @@ export default function Pricing() {
               Outcomes, Not Hours
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mt-3 mb-8">
+          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4 mb-8">
             No hidden fees. No scope creep surprises. Fixed monthly engagements with clear deliverables.
           </p>
 
