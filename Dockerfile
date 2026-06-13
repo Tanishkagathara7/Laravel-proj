@@ -41,8 +41,9 @@ COPY . .
 # Copy built frontend assets from node-builder
 COPY --from=node-builder /app/public/build ./public/build
 
-# Set permissions
-RUN chown -R www-data:www-data storage bootstrap/cache \
+# Set permissions and create required directories
+RUN mkdir -p bootstrap/cache storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs \
+    && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
 EXPOSE 8000
