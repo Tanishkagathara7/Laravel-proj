@@ -106,7 +106,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={ref}
-      className="py-24 bg-[#111827]"
+      className="py-24 bg-white dark:bg-[#111827] transition-colors duration-300"
       aria-labelledby="testimonials-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,7 +123,7 @@ export default function Testimonials() {
               ✦ Client Stories
             </span>
           </div>
-          <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold text-white text-center">
+          <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center">
             Trusted by{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -136,7 +136,7 @@ export default function Testimonials() {
               Industry Leaders
             </span>
           </h2>
-          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
+          <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Don't take our word for it — hear directly from the teams we've partnered with.
           </p>
         </motion.div>
@@ -155,7 +155,7 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.4 }}
-                className="p-8 md:p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md"
+                className="p-8 md:p-10 rounded-3xl bg-slate-50 shadow-sm dark:shadow-none dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md"
               >
                 {/* Stars */}
                 <div className="flex gap-1 mb-6">
@@ -168,7 +168,7 @@ export default function Testimonials() {
                 <div className="text-7xl text-indigo-500 font-serif leading-none mb-2 -mt-2">"</div>
 
                 {/* Quote text */}
-                <p className="text-slate-300 text-xl italic leading-relaxed mb-8">
+                <p className="text-slate-700 dark:text-slate-300 text-xl italic leading-relaxed mb-8">
                   {testimonials[current].quote}
                 </p>
 
@@ -178,10 +178,10 @@ export default function Testimonials() {
                     {testimonials[current].avatar}
                   </div>
                   <div>
-                    <p className="text-white font-semibold">
+                    <p className="text-slate-900 dark:text-white font-semibold">
                       {testimonials[current].name}
                     </p>
-                    <p className="text-slate-400 text-sm">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm">
                       {testimonials[current].role}
                     </p>
                   </div>
@@ -192,26 +192,26 @@ export default function Testimonials() {
             {/* Prev/Next arrows */}
             <div className="flex justify-center gap-3 mt-8">
               <button onClick={prev} 
-                className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                <ChevronLeft className="w-5 h-5 text-white" />
+                className="p-3 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-200 dark:hover:bg-white/10 transition-all">
+                <ChevronLeft className="w-5 h-5 text-slate-600 dark:text-white" />
               </button>
               <button onClick={next}
-                className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                <ChevronRight className="w-5 h-5 text-white" />
+                className="p-3 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-200 dark:hover:bg-white/10 transition-all">
+                <ChevronRight className="w-5 h-5 text-slate-600 dark:text-white" />
               </button>
             </div>
           </div>
 
           {/* Company logos strip */}
           <div className="mt-16">
-            <p className="text-center text-slate-500 text-sm mb-6 uppercase tracking-widest">
+            <p className="text-center text-slate-500 dark:text-slate-500 text-sm mb-6 uppercase tracking-widest">
               Trusted by teams at
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
               {['Meridian Health', 'TradeSpark', 'LegalFlow', 'RetailNation', 'FleetMax'].map((co) => (
                 <motion.span
                   key={co}
-                  className="text-slate-600 font-bold text-sm tracking-wide hover:text-slate-400 transition-colors cursor-default"
+                  className="text-slate-400 dark:text-slate-600 font-bold text-sm tracking-wide hover:text-slate-600 dark:hover:text-slate-400 transition-colors cursor-default"
                   whileHover={{ scale: 1.05 }}
                 >
                   {co}

@@ -27,8 +27,8 @@ function StatCard({ icon: Icon, label, value, delay, className }) {
   return (
     <motion.div
       className={`absolute z-20 flex items-center gap-3 px-4 py-3 rounded-2xl
-        bg-white/[0.07] backdrop-blur-md border border-white/10
-        shadow-[0_8px_32px_rgba(0,0,0,0.3)] ${className}`}
+        bg-white dark:bg-white/[0.07] backdrop-blur-md border border-slate-200 dark:border-white/10
+        shadow-sm dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] ${className}`}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{
         opacity: 1,
@@ -51,8 +51,8 @@ function StatCard({ icon: Icon, label, value, delay, className }) {
         <Icon className="w-4 h-4 text-white" />
       </div>
       <div>
-        <div className="text-white font-bold text-sm leading-none">{value}</div>
-        <div className="text-slate-400 text-xs mt-0.5">{label}</div>
+        <div className="text-slate-900 dark:text-white font-bold text-sm leading-none">{value}</div>
+        <div className="text-slate-500 dark:text-slate-400 text-xs mt-0.5">{label}</div>
       </div>
     </motion.div>
   );
@@ -82,7 +82,7 @@ export default function Hero() {
       id="hero"
       ref={heroRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#0F172A] pt-16"
+      className="relative min-h-screen flex items-center overflow-hidden bg-slate-50 dark:bg-[#0F172A] pt-16 transition-colors duration-300"
       aria-label="Hero section"
     >
       {/* ── Radial glow (fix #5) ── */}
@@ -159,7 +159,7 @@ export default function Hero() {
           {/* Headline */}
           <motion.h1
             variants={itemVariants}
-            className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6 text-white"
+            className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6 text-slate-900 dark:text-white"
           >
             Build Smarter.{' '}
             <span
@@ -178,7 +178,7 @@ export default function Hero() {
           {/* Subheadline — capped at 600px (fix #4) */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-slate-400 leading-relaxed mb-8 max-w-[600px] mx-auto"
+            className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-[600px] mx-auto"
           >
             NexaAI engineers AI-native software that transforms how businesses operate — from intelligent
             automation and predictive analytics to custom LLM integrations and full-stack SaaS platforms.
@@ -200,7 +200,7 @@ export default function Hero() {
             <motion.a
               href="#portfolio"
               onClick={scrollTo('#portfolio')}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 text-white font-semibold text-sm hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 dark:border-white/10 text-slate-700 dark:text-white font-semibold text-sm hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -228,7 +228,7 @@ export default function Hero() {
                 ))}
               </div>
               <p className="text-slate-400 text-xs">
-                Trusted by <span className="text-white font-semibold">200+ companies</span> worldwide
+                Trusted by <span className="text-slate-900 dark:text-white font-semibold">200+ companies</span> worldwide
               </p>
             </div>
           </motion.div>

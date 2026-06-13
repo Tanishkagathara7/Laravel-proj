@@ -108,7 +108,7 @@ export default function Features() {
     <section
       id="features"
       ref={ref}
-      className="py-24 bg-[#0F172A]"
+      className="py-24 bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300"
       aria-labelledby="features-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -132,7 +132,7 @@ export default function Features() {
           {/* Layer 2 — heading */}
           <h2
             id="features-heading"
-            className="text-4xl md:text-5xl font-bold text-white text-center"
+            className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center"
           >
             Engineered for{' '}
             <span
@@ -148,7 +148,7 @@ export default function Features() {
           </h2>
 
           {/* Layer 3 — subtitle */}
-          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
+          <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Our process is refined across hundreds of projects to deliver exceptional outcomes every
             time — without compromise on quality, security, or speed.
           </p>
@@ -163,7 +163,7 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group p-6 rounded-2xl bg-white/5 border border-white/10
+              className="group p-6 rounded-2xl bg-white shadow-sm dark:shadow-none dark:bg-white/5 border border-slate-200 dark:border-white/10
                 hover:border-indigo-500/50 hover:-translate-y-1
                 transition-all duration-300 backdrop-blur-sm"
             >
@@ -173,8 +173,8 @@ export default function Features() {
                 flex items-center justify-center mb-4">
                 <feature.icon className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-white font-semibold text-lg mb-2">{feature.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{feature.description}</p>
+              <h3 className="text-slate-900 dark:text-white font-semibold text-lg mb-2">{feature.title}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>

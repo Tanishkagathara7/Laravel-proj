@@ -17,8 +17,17 @@
         {{-- Vite assets --}}
         @viteReactRefresh
         @vite(['resources/js/app.jsx'])
+
+        {{-- Dark mode script to prevent FOUC --}}
+        <script>
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+        </script>
     </head>
-    <body class="antialiased bg-[#0F172A]">
+    <body class="antialiased bg-slate-50 dark:bg-[#0F172A]">
         @inertia
     </body>
 </html>

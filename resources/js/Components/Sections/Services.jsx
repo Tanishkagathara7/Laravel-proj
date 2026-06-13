@@ -97,7 +97,7 @@ function ServiceCard({ service, index }) {
   return (
     <motion.article
       variants={cardVariants}
-      className={`group relative p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] ${service.borderColor} transition-all duration-300 cursor-default overflow-hidden`}
+      className={`group relative p-6 rounded-2xl bg-white shadow-sm dark:shadow-none dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] ${service.borderColor} transition-all duration-300 cursor-default overflow-hidden`}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       aria-labelledby={`service-title-${index}`}
     >
@@ -110,7 +110,7 @@ function ServiceCard({ service, index }) {
       <div className="relative z-10">
         {/* Icon */}
         <div
-          className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 border border-white/10 mb-4 group-hover:scale-110 transition-transform duration-300`}
+          className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 mb-4 group-hover:scale-110 transition-transform duration-300`}
           aria-hidden="true"
         >
           <Icon className={`w-6 h-6 ${service.iconColor}`} />
@@ -119,13 +119,13 @@ function ServiceCard({ service, index }) {
         {/* Title */}
         <h3
           id={`service-title-${index}`}
-          className="font-display font-bold text-lg text-white mb-2"
+          className="font-display font-bold text-lg text-slate-900 dark:text-white mb-2"
         >
           {service.title}
         </h3>
 
         {/* Description */}
-        <p className="text-slate-400 text-sm leading-relaxed mb-4">
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
           {service.description}
         </p>
 
@@ -134,7 +134,7 @@ function ServiceCard({ service, index }) {
           {service.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-400 text-xs font-medium"
+              className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 text-xs font-medium"
             >
               {tag}
             </span>
@@ -170,7 +170,7 @@ export default function Services() {
     <section
       id="services"
       ref={ref}
-      className="py-24 bg-[#111827] relative overflow-hidden"
+      className="py-24 bg-white dark:bg-[#111827] relative overflow-hidden transition-colors duration-300"
       aria-labelledby="services-heading"
     >
       {/* Background decorations */}
@@ -191,7 +191,7 @@ export default function Services() {
           </div>
           <h2
             id="services-heading"
-            className="text-4xl md:text-5xl font-bold text-white text-center"
+            className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center"
           >
             Services That{' '}
             <span
@@ -205,7 +205,7 @@ export default function Services() {
               Move Needles
             </span>
           </h2>
-          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
+          <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mt-4">
             We don't just write code — we architect competitive advantages. Every engagement is engineered to deliver measurable business outcomes.
           </p>
         </motion.div>

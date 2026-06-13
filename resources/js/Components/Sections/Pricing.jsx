@@ -97,8 +97,8 @@ function PricingCard({ plan, isAnnual }) {
       variants={cardVariants}
       className={`relative flex flex-col rounded-2xl transition-all duration-300 ${
         plan.popular
-          ? 'border-2 border-indigo-500 scale-105 shadow-[0_0_60px_rgba(99,102,241,0.25)] bg-gradient-to-b from-indigo-500/5 to-transparent'
-          : 'border border-white/10 bg-white/[0.02]'
+          ? 'border-2 border-indigo-500 scale-105 shadow-[0_0_60px_rgba(99,102,241,0.25)] bg-white dark:bg-transparent bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-500/5 dark:to-transparent'
+          : 'border border-slate-200 dark:border-white/10 bg-white shadow-sm dark:shadow-none dark:bg-white/[0.02]'
       }`}
       aria-label={`${plan.name} plan${plan.popular ? ', most popular' : ''}`}
     >
@@ -115,8 +115,8 @@ function PricingCard({ plan, isAnnual }) {
 
       <div className="flex flex-col h-full p-7 pt-5">
         {/* Plan name */}
-        <h3 className="font-display font-bold text-xl text-white mb-1">{plan.name}</h3>
-        <p className="text-slate-400 text-sm mb-6">{plan.tagline}</p>
+        <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white mb-1">{plan.name}</h3>
+        <p className="text-slate-600 dark:text-slate-400 text-sm mb-6">{plan.tagline}</p>
 
         {/* Price */}
         <div className="mb-6">
@@ -125,19 +125,19 @@ function PricingCard({ plan, isAnnual }) {
               <span
                 className={`font-display font-bold text-4xl sm:text-5xl ${
                   plan.popular
-                    ? 'bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400'
-                    : 'text-white'
+                    ? 'bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-400 dark:to-purple-400'
+                    : 'text-slate-900 dark:text-white'
                 }`}
               >
                 ${price.toLocaleString()}
               </span>
-              <span className="text-slate-400 text-sm mb-2">/mo</span>
+              <span className="text-slate-500 dark:text-slate-400 text-sm mb-2">/mo</span>
             </div>
           ) : (
-            <div className="font-display font-bold text-4xl text-white">Custom</div>
+            <div className="font-display font-bold text-4xl text-slate-900 dark:text-white">Custom</div>
           )}
           {isAnnual && price !== null && (
-            <p className="text-green-400 text-xs mt-1">
+            <p className="text-green-600 dark:text-green-400 text-xs mt-1">
               Save ${((plan.monthlyPrice - plan.annualPrice) * 12).toLocaleString()}/year
             </p>
           )}
@@ -155,7 +155,7 @@ function PricingCard({ plan, isAnnual }) {
                       focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
             plan.popular
               ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:shadow-[0_0_20px_rgba(99,102,241,0.5)]'
-              : 'border border-white/20 text-white hover:bg-white/5'
+              : 'border border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/5'
           }`}
           aria-label={`${plan.cta} — ${plan.name} plan`}
         >
@@ -163,17 +163,17 @@ function PricingCard({ plan, isAnnual }) {
         </a>
 
         {/* Divider */}
-        <div className="h-px bg-white/5 mb-6" aria-hidden="true" />
+        <div className="h-px bg-slate-200 dark:bg-white/5 mb-6" aria-hidden="true" />
 
         {/* Features */}
         <ul className="space-y-3 flex-1" role="list">
           {plan.features.map((f) => (
             <li key={f} className="flex items-start gap-3">
               <Check
-                className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.popular ? 'text-indigo-400' : 'text-green-400'}`}
+                className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.popular ? 'text-indigo-500 dark:text-indigo-400' : 'text-green-500 dark:text-green-400'}`}
                 aria-hidden="true"
               />
-              <span className="text-slate-300 text-sm">{f}</span>
+              <span className="text-slate-700 dark:text-slate-300 text-sm">{f}</span>
             </li>
           ))}
         </ul>
@@ -192,7 +192,7 @@ export default function Pricing() {
     <section
       id="pricing"
       ref={ref}
-      className="py-24 bg-[#111827]"
+      className="py-24 bg-white dark:bg-[#111827] transition-colors duration-300"
       aria-labelledby="pricing-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -209,7 +209,7 @@ export default function Pricing() {
               ✦ Transparent Pricing
             </span>
           </div>
-          <h2 id="pricing-heading" className="text-4xl md:text-5xl font-bold text-white text-center">
+          <h2 id="pricing-heading" className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center">
             Invest in{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -222,18 +222,18 @@ export default function Pricing() {
               Outcomes, Not Hours
             </span>
           </h2>
-          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4 mb-8">
+          <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mt-4 mb-8">
             No hidden fees. No scope creep surprises. Fixed monthly engagements with clear deliverables.
           </p>
 
           {/* Billing toggle */}
-          <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-white/5 border border-white/10">
+          <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
             <button
               onClick={() => setIsAnnual(false)}
               aria-pressed={!isAnnual}
               className={`px-5 py-2 rounded-lg text-sm font-medium transition-all
                           focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
-                !isAnnual ? 'bg-white text-[#0F172A]' : 'text-slate-400 hover:text-white'
+                !isAnnual ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Monthly
@@ -243,11 +243,11 @@ export default function Pricing() {
               aria-pressed={isAnnual}
               className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all
                           focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
-                isAnnual ? 'bg-white text-[#0F172A]' : 'text-slate-400 hover:text-white'
+                isAnnual ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Annual
-              <span className="px-1.5 py-0.5 rounded bg-green-400/20 text-green-400 text-xs font-bold">
+              <span className="px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-400/20 text-green-700 dark:text-green-400 text-xs font-bold">
                 -15%
               </span>
             </button>
@@ -277,13 +277,13 @@ export default function Pricing() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-            <div className="w-10 h-10 rounded-full bg-green-400/10 border border-green-400/20 flex items-center justify-center flex-shrink-0">
-              <Check className="w-5 h-5 text-green-400" aria-hidden="true" />
+          <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06]">
+            <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-400/10 border border-green-200 dark:border-green-400/20 flex items-center justify-center flex-shrink-0">
+              <Check className="w-5 h-5 text-green-600 dark:text-green-400" aria-hidden="true" />
             </div>
             <div className="text-left">
-              <div className="text-white font-semibold text-sm">14-day risk-free start</div>
-              <div className="text-slate-400 text-xs">Not happy in the first two weeks? You pay nothing.</div>
+              <div className="text-slate-900 dark:text-white font-semibold text-sm">14-day risk-free start</div>
+              <div className="text-slate-600 dark:text-slate-400 text-xs">Not happy in the first two weeks? You pay nothing.</div>
             </div>
           </div>
         </motion.div>

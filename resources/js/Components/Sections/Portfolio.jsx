@@ -93,8 +93,8 @@ function ProjectCard({ project }) {
   return (
     <motion.article
       variants={cardVariants}
-      className="rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.02]
-                 hover:border-indigo-500/30 transition-colors duration-300"
+      className="rounded-2xl overflow-hidden border border-slate-200 dark:border-white/[0.08] bg-white shadow-sm dark:shadow-none dark:bg-white/[0.02]
+                 hover:border-indigo-500/50 dark:hover:border-indigo-500/30 transition-all duration-300"
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
@@ -128,7 +128,7 @@ function ProjectCard({ project }) {
             >
               <motion.button
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl
-                           bg-white text-[#0F172A] font-semibold text-sm
+                           bg-white text-slate-900 font-semibold text-sm
                            hover:bg-slate-100 transition-colors"
                 initial={{ scale: 0.85, y: 8 }}
                 animate={{ scale: 1, y: 0 }}
@@ -159,11 +159,11 @@ function ProjectCard({ project }) {
       <div className="px-5 py-4">
         <h3
           id={`proj-${project.title}`}
-          className="font-semibold text-white text-base mb-1 truncate"
+          className="font-semibold text-slate-900 dark:text-white text-base mb-1 truncate"
         >
           {project.title}
         </h3>
-        <p className="text-slate-400 text-sm leading-snug mb-3 line-clamp-2">
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-snug mb-3 line-clamp-2">
           {project.description}
         </p>
 
@@ -199,7 +199,7 @@ export default function Portfolio() {
     <section
       id="portfolio"
       ref={ref}
-      className="py-24 bg-[#0F172A]"
+      className="py-24 bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300"
       aria-labelledby="portfolio-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -216,7 +216,7 @@ export default function Portfolio() {
               ✦ Our Work
             </span>
           </div>
-          <h2 id="portfolio-heading" className="text-4xl md:text-5xl font-bold text-white text-center">
+          <h2 id="portfolio-heading" className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center">
             Projects That{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -229,7 +229,7 @@ export default function Portfolio() {
               Redefine Industries
             </span>
           </h2>
-          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
+          <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mt-4">
             A curated selection of work we're most proud of. Every project shipped on time and on budget.
           </p>
         </motion.div>
@@ -253,7 +253,7 @@ export default function Portfolio() {
                           focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
                 activeFilter === cat
                   ? 'bg-indigo-500 text-white shadow-[0_0_16px_rgba(99,102,241,0.4)]'
-                  : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/5'
+                  : 'bg-white shadow-sm dark:shadow-none dark:bg-white/5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-white/5'
               }`}
             >
               {cat}
@@ -282,7 +282,7 @@ export default function Portfolio() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center mt-12"
         >
-          <p className="text-slate-400 mb-4">Ready to be our next success story?</p>
+          <p className="text-slate-600 dark:text-slate-400 mb-4">Ready to be our next success story?</p>
           <a
             href="#contact"
             onClick={(e) => {

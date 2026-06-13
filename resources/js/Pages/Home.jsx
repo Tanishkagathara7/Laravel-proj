@@ -27,7 +27,7 @@ export default function Home({ meta }) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </Head>
 
-      <div className="bg-[#0F172A] text-white min-h-screen font-body overflow-x-hidden">
+      <div className="bg-slate-50 dark:bg-[#0F172A] text-slate-900 dark:text-white min-h-screen font-body overflow-x-hidden transition-colors duration-300">
         <Navbar />
         <main>
           <Hero />

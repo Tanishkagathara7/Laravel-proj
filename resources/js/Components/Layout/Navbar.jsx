@@ -1,7 +1,7 @@
 // resources/js/Components/Layout/Navbar.jsx
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { Zap, Menu, X } from 'lucide-react';
+import { Zap, Menu, X, Sun, Moon } from 'lucide-react';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -25,7 +25,24 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [theme, setTheme] = useState(
+    typeof window !== 'undefined' ? localStorage.theme || 'dark' : 'dark'
+  );
   const { scrollY } = useScroll();
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
 
   useEffect(() => {
     return scrollY.on('change', (latest) => {
@@ -48,7 +65,7 @@ export default function Navbar() {
       transition={{ duration: 0.3, ease: 'easeInOut' }}
       className={`fixed top-0 w-full z-50 transition-all duration-300
         ${scrolled 
-          ? 'bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10' 
+          ? 'bg-white/90 dark:bg-[#0F172A]/90 backdrop-blur-md border-b border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none' 
           : 'bg-transparent'}`}
       role="banner"
     >
@@ -70,7 +87,7 @@ export default function Navbar() {
           >
             <Zap className="w-4 h-4 text-white" aria-hidden="true" />
           </motion.div>
-          <span className="font-display font-bold text-xl text-white">
+          <span className="font-display font-bold text-xl text-slate-900 dark:text-white transition-colors">
             Nexa<span className="text-primary">AI</span>
           </span>
         </a>
@@ -82,14 +99,10 @@ export default function Navbar() {
               <motion.a
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="relative px-4 py-2 text-sm font-medium text-nexa-gray-300 hover:text-white transition-colors rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                whileHover={{ color: '#ffffff' }}
+                className="relative px-4 py-2 text-sm font-medium text-slate-600 dark:text-nexa-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary group/nav"
               >
                 <motion.span
-                  className="absolute inset-0 rounded-lg bg-white/5"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0 rounded-lg bg-slate-100 dark:bg-white/5 opacity-0 group-hover/nav:opacity-100 transition-opacity duration-200"
                 />
                 <span className="relative z-10">{link.label}</span>
               </motion.a>
@@ -99,6 +112,14 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-nexa-gray-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label="Toggle Dark Mode"
+          >
+            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
+
           <motion.a
             href="#contact"
             onClick={(e) => scrollToSection(e, '#contact')}
@@ -114,16 +135,26 @@ export default function Navbar() {
           </motion.a>
         </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          className="md:hidden p-2 rounded-lg text-nexa-gray-300 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          onClick={() => setMobileOpen((o) => !o)}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-menu"
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-        >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        {/* Mobile Hamburger & Theme */}
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-nexa-gray-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label="Toggle Dark Mode"
+          >
+            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
+
+          <button
+            className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-nexa-gray-300 dark:hover:text-white dark:hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}
@@ -135,7 +166,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="md:hidden overflow-hidden bg-[#111827]/95 backdrop-blur-xl border-b border-white/5"
+            className="md:hidden overflow-hidden bg-white/95 dark:bg-[#111827]/95 backdrop-blur-xl border-b border-slate-200 dark:border-white/5"
           >
             <ul className="px-4 py-4 space-y-1" role="list">
               {navLinks.map((link) => (
@@ -143,7 +174,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={(e) => scrollToSection(e, link.href)}
-                    className="block px-4 py-3 rounded-lg text-nexa-gray-300 hover:text-white hover:bg-white/5 transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    className="block px-4 py-3 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:text-nexa-gray-300 dark:hover:text-white dark:hover:bg-white/5 transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     {link.label}
                   </a>

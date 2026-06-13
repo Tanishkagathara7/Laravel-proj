@@ -54,9 +54,9 @@ function TechPill({ name, dotColor }) {
   return (
     <motion.li
       variants={rowVariants}
-      className="group flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg
-                 px-4 py-2 text-sm text-slate-300 cursor-default
-                 hover:bg-indigo-500/10 hover:border-indigo-500/30 hover:text-white
+      className="group flex items-center gap-2 bg-white shadow-sm dark:shadow-none dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg
+                 px-4 py-2 text-sm text-slate-700 dark:text-slate-300 cursor-default
+                 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:border-indigo-500/30 hover:text-indigo-900 dark:hover:text-white
                  transition-all duration-200"
       whileHover={{ y: -2 }}
     >
@@ -75,7 +75,7 @@ export default function TechStack() {
     <section
       id="tech"
       ref={ref}
-      className="py-24 bg-[#0F172A]"
+      className="py-24 bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300"
       aria-labelledby="tech-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,7 +92,7 @@ export default function TechStack() {
               ✦ Our Stack
             </span>
           </div>
-          <h2 id="tech-heading" className="text-4xl md:text-5xl font-bold text-white text-center">
+          <h2 id="tech-heading" className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center">
             Best-in-Class{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -105,7 +105,7 @@ export default function TechStack() {
               Technology
             </span>
           </h2>
-          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
+          <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mt-4">
             We're technology-agnostic but opinionated — we choose the right tool for each job
             and we know these tools deeply.
           </p>
@@ -121,12 +121,12 @@ export default function TechStack() {
               transition={{ duration: 0.6, delay: catIdx * 0.1 }}
             >
               {/* Category label */}
-              <p className="text-slate-500 text-xs uppercase tracking-widest mb-3 font-medium">
+              <p className="text-slate-500 dark:text-slate-500 text-xs uppercase tracking-widest mb-3 font-medium">
                 {cat.label}
               </p>
 
               {/* Divider */}
-              <div className="h-px bg-white/5 mb-4" aria-hidden="true" />
+              <div className="h-px bg-slate-200 dark:bg-white/5 mb-4" aria-hidden="true" />
 
               {/* Pills */}
               <motion.ul
@@ -150,7 +150,7 @@ export default function TechStack() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center text-slate-500 text-sm mt-12"
+          className="text-center text-slate-600 dark:text-slate-500 text-sm mt-12"
         >
           Already have a preferred stack? We adapt to your existing infrastructure.{' '}
           <a
@@ -159,7 +159,7 @@ export default function TechStack() {
               e.preventDefault();
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="text-indigo-400 hover:text-white transition-colors underline underline-offset-2
+            className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-white transition-colors underline underline-offset-2
                        focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded"
           >
             Let's talk

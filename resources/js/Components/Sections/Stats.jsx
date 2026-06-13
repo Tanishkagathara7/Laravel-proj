@@ -79,7 +79,7 @@ export default function Stats() {
       aria-labelledby="stats-heading"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-[#111827]" aria-hidden="true" />
+      <div className="absolute inset-0 bg-white dark:bg-[#111827] transition-colors duration-300" aria-hidden="true" />
       <div className="absolute inset-0" aria-hidden="true"
         style={{
           backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(99,102,241,0.08) 0%, transparent 60%)',
@@ -101,7 +101,7 @@ export default function Stats() {
           </div>
           <h2
             id="stats-heading"
-            className="text-4xl md:text-5xl font-bold text-white text-center"
+            className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center"
           >
             Results That{' '}
             <span
@@ -115,7 +115,7 @@ export default function Stats() {
               Speak for Themselves
             </span>
           </h2>
-          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
+          <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Every metric below is pulled from real client data — not marketing estimates.
           </p>
         </motion.div>
@@ -131,7 +131,7 @@ export default function Stats() {
             <motion.div
               key={stat.label}
               variants={statVariants}
-              className="relative p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08] overflow-hidden group hover:border-white/20 transition-colors duration-300"
+              className="relative p-8 rounded-2xl bg-white shadow-sm dark:shadow-none dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] overflow-hidden group hover:border-slate-300 dark:hover:border-white/20 transition-colors duration-300"
             >
               {/* Subtle gradient bg */}
               <div
@@ -162,10 +162,10 @@ export default function Stats() {
                   />
                 </div>
 
-                <h3 className="font-display font-semibold text-white text-lg mb-1">
+                <h3 className="font-display font-semibold text-slate-900 dark:text-white text-lg mb-1">
                   {stat.label}
                 </h3>
-                <p className="text-slate-500 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-500 text-sm leading-relaxed">
                   {stat.description}
                 </p>
               </div>

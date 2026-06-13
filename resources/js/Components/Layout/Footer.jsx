@@ -43,19 +43,19 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0A0F1E] border-t border-white/10 pt-16 pb-8">
+    <footer className="bg-white dark:bg-[#0A0F1E] border-t border-slate-200 dark:border-white/10 pt-16 pb-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {/* Col 1: Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="text-xl font-bold text-white mb-3">NexaAI</div>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <div className="text-xl font-bold text-slate-900 dark:text-white mb-3">NexaAI</div>
+            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
               Building future-ready digital products with AI.
             </p>
             {/* Social icons row */}
             <div className="flex gap-3 mt-6">
               {socials.map(({ icon: Icon, label, href }) => (
-                <a key={label} href={href} className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors">
+                <a key={label} href={href} className="w-9 h-9 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
@@ -65,13 +65,13 @@ export default function Footer() {
           {/* Col 2-4: Link groups */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-white font-semibold text-sm mb-4">
+              <h4 className="text-slate-900 dark:text-white font-semibold text-sm mb-4">
                 {category}
               </h4>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-slate-400 hover:text-white text-sm transition-colors">{link.label}</a>
+                    <a href={link.href} className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm transition-colors">{link.label}</a>
                   </li>
                 ))}
               </ul>
@@ -80,7 +80,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-slate-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-500 text-sm">
             © {currentYear} NexaAI. All rights reserved.
           </p>

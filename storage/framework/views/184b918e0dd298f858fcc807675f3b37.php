@@ -17,8 +17,17 @@
         
         <?php echo app('Illuminate\Foundation\Vite')->reactRefresh(); ?>
         <?php echo app('Illuminate\Foundation\Vite')(['resources/js/app.jsx']); ?>
+
+        
+        <script>
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+        </script>
     </head>
-    <body class="antialiased bg-[#0F172A]">
+    <body class="antialiased bg-slate-50 dark:bg-[#0F172A]">
         <?php if (!isset($__inertiaSsrDispatched)) { $__inertiaSsrDispatched = true; $__inertiaSsrResponse = app(\Inertia\Ssr\Gateway::class)->dispatch($page); }  if ($__inertiaSsrResponse) { echo $__inertiaSsrResponse->body; } elseif (config('inertia.use_script_element_for_initial_page')) { ?><script data-page="app" type="application/json"><?php echo json_encode($page); ?></script><div id="app"></div><?php } else { ?><div id="app" data-page="<?php echo e(json_encode($page)); ?>"></div><?php } ?>
     </body>
 </html>

@@ -82,7 +82,7 @@ function InputField({ id, label, icon: Icon, error, required, children }) {
     <div>
       <label
         htmlFor={id}
-        className="block text-sm font-medium text-slate-300 mb-2"
+        className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
       >
         {label}
         {required && <span className="text-primary ml-1" aria-hidden="true">*</span>}
@@ -133,17 +133,17 @@ export default function Contact() {
   };
 
   const inputClass = (field) =>
-    `w-full pl-11 pr-4 py-3 rounded-xl bg-white/[0.03] border text-white placeholder-slate-600 text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:bg-white/[0.05] ${
+    `w-full pl-11 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:bg-white dark:focus:bg-white/[0.05] ${
       errors[field]
         ? 'border-red-500/50 focus:ring-red-500/30'
-        : 'border-white/[0.08] focus:ring-indigo-500/30 focus:border-indigo-500/40'
+        : 'border-slate-200 dark:border-white/[0.08] focus:ring-indigo-500/30 focus:border-indigo-500/40'
     }`;
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="py-24 relative bg-[#0F172A]"
+      className="py-24 relative bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300"
       aria-labelledby="contact-heading"
     >
       {/* Background */}
@@ -167,7 +167,7 @@ export default function Contact() {
               ✦ Get in Touch
             </span>
           </div>
-          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-white text-center mb-4">
+          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center mb-4">
             Let's Build{' '}
             <span
               className="bg-clip-text text-transparent"
@@ -180,17 +180,17 @@ export default function Contact() {
               Something Great
             </span>
           </h2>
-          <p className="text-lg text-slate-400 text-center max-w-2xl mx-auto mt-4">
+          <p className="text-lg text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Ready to transform your business with AI? Tell us about your project and we'll get back to you within 4 hours.
           </p>
         </motion.div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto mt-16">
           {/* Left: Info column */}
           <div className="space-y-8">
-            <h3 className="text-3xl font-bold text-white">
+            <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
               Let's build something <span className="text-indigo-400">great</span>
             </h3>
-            <p className="text-slate-400">Tell us about your project and we'll craft a tailored proposal within 48 hours.</p>
+            <p className="text-slate-600 dark:text-slate-400">Tell us about your project and we'll craft a tailored proposal within 48 hours.</p>
             {[
               { icon: Mail,    label: 'hello@nexaai.com' },
               { icon: Phone,   label: '+1 (555) 000-0000' },
@@ -200,7 +200,7 @@ export default function Contact() {
                 <div className="w-10 h-10 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center flex-shrink-0">
                   <Icon className="w-5 h-5 text-indigo-400" />
                 </div>
-                <span className="text-slate-300">{label}</span>
+                <span className="text-slate-700 dark:text-slate-300">{label}</span>
               </div>
             ))}
           </div>
@@ -210,9 +210,9 @@ export default function Contact() {
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md"
+            className="p-8 rounded-3xl bg-white shadow-sm dark:shadow-none dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md"
           >
-            <div className="relative p-8 rounded-3xl bg-slate-900/50 backdrop-blur-xl border border-white/10 overflow-hidden max-w-2xl mx-auto shadow-2xl">
+            <div className="relative p-8 rounded-3xl bg-white dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200 dark:border-white/10 overflow-hidden max-w-2xl mx-auto shadow-sm dark:shadow-2xl">
               {/* Glow top */}
               <div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"
@@ -248,10 +248,10 @@ export default function Contact() {
                       </motion.div>
                     </motion.div>
 
-                    <h3 className="font-display font-bold text-2xl text-white mb-2">
+                    <h3 className="font-display font-bold text-2xl text-slate-900 dark:text-white mb-2">
                       Message Received!
                     </h3>
-                    <p className="text-slate-400 text-sm max-w-sm">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm max-w-sm">
                       {flashSuccess || "Thank you for reaching out! A member of our team will get back to you within 4 business hours."}
                     </p>
 
@@ -327,7 +327,7 @@ export default function Contact() {
                     <div>
                       <label
                         htmlFor="message"
-                        className="block text-sm font-medium text-slate-300 mb-2"
+                        className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
                       >
                         Tell Us About Your Project
                         <span className="text-indigo-400 ml-1" aria-hidden="true">*</span>
@@ -386,7 +386,7 @@ export default function Contact() {
                     <motion.button
                       type="submit"
                       disabled={processing}
-                      className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F172A]"
+                      className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0F172A]"
                       whileHover={!processing ? { scale: 1.01, boxShadow: '0 0 30px rgba(99,102,241,0.5)' } : {}}
                       whileTap={!processing ? { scale: 0.99 } : {}}
                       aria-label={processing ? 'Sending your message...' : 'Send message'}
@@ -404,9 +404,9 @@ export default function Contact() {
                       )}
                     </motion.button>
 
-                    <p className="text-center text-slate-600 text-xs">
+                    <p className="text-center text-slate-500 dark:text-slate-600 text-xs">
                       By submitting, you agree to our{' '}
-                      <a href="#" className="text-slate-400 hover:text-white transition-colors underline underline-offset-2">
+                      <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors underline underline-offset-2">
                         Privacy Policy
                       </a>
                       . We never share your information.
